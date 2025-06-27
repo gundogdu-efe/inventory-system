@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EnvanterSistemiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="photo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="rol" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Envanter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriId" Type="Int32" />
+    <Property Name="turId" Type="Int32" />
+    <Property Name="kodu" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="ilgiliBirim" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kaydedenPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kayitTarihi" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="EnvanterTür" Relationship="Self.FK_Envanter_EnvanterTür" FromRole="Envanter" ToRole="EnvanterTür" />
+    <NavigationProperty Name="VarlikKategori" Relationship="Self.FK_Envanter_VarlikKategori" FromRole="Envanter" ToRole="VarlikKategori" />
+    <NavigationProperty Name="EnvanterDetays" Relationship="Self.FK_EnvanterDetay_Envanter" FromRole="Envanter" ToRole="EnvanterDetay" />
+    <NavigationProperty Name="EnvanterDosyas" Relationship="Self.FK_EnvanterDosya_Envanter" FromRole="Envanter" ToRole="EnvanterDosya" />
+    <NavigationProperty Name="EnvanterSKDisis" Relationship="Self.FK_EnvanterSKDisi_Envanter" FromRole="Envanter" ToRole="EnvanterSKDisi" />
+    <NavigationProperty Name="ServisKayits" Relationship="Self.FK_ServisKayit_Envanter" FromRole="Envanter" ToRole="ServisKayit" />
+    <NavigationProperty Name="Zimmets" Relationship="Self.FK_Zimmet_Envanter" FromRole="Envanter" ToRole="Zimmet" />
+    <Property Name="zstatus" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="EnvanterDetay">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="envanterId" Type="Int32" />
+    <Property Name="envanterKodu" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="envanterTuru" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="modelId" Type="Int32" />
+    <Property Name="seriNo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="pcTuru" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="islemci" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="hdd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ssd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ram" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lanMac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="wifiMac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="imei1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="imei2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="plaka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="hatNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="simId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="onyuzNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="arkayuzNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kgbNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mobilyaCinsi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cekmece" Type="Int32" />
+    <Property Name="kapak" Type="Int32" />
+    <Property Name="en" Type="Int32" />
+    <Property Name="boy" Type="Int32" />
+    <Property Name="yukseklik" Type="Int32" />
+    <Property Name="kaydedenPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kayitZamani" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Envanter" Relationship="Self.FK_EnvanterDetay_Envanter" FromRole="EnvanterDetay" ToRole="Envanter" />
+    <NavigationProperty Name="MarkaModel" Relationship="Self.FK_EnvanterDetay_MarkaModel" FromRole="EnvanterDetay" ToRole="MarkaModel" />
+  </EntityType>
+  <EntityType Name="EnvanterDosya">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="envanterId" Type="Int32" />
+    <Property Name="envanterKodu" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="dosyaTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dosyaYolu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="kaydedenPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kayitZamani" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Envanter" Relationship="Self.FK_EnvanterDosya_Envanter" FromRole="EnvanterDosya" ToRole="Envanter" />
+  </EntityType>
+  <EntityType Name="EnvanterSKDisi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="envanterId" Type="Int32" />
+    <Property Name="envanterKodu" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="islemTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="kaydedenPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kayitZamani" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Envanter" Relationship="Self.FK_EnvanterSKDisi_Envanter" FromRole="EnvanterSKDisi" ToRole="Envanter" />
+  </EntityType>
+  <EntityType Name="EnvanterTür">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriId" Type="Int32" />
+    <Property Name="typeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="turAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kategoriKodu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ortakKod" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="bgys" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="it" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="kalite" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="ilgiliBirim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Envanters" Relationship="Self.FK_Envanter_EnvanterTür" FromRole="EnvanterTür" ToRole="Envanter" />
+  </EntityType>
+  <EntityType Name="Konum">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="odaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="lokasyon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Personels" Relationship="Self.FK_Personel_Konum" FromRole="Konum" ToRole="Personel" />
+  </EntityType>
+  <EntityType Name="LogKayit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="envanterId" Type="Int32" />
+    <Property Name="envanterKodu" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="logKonusu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="kaydedenPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kayitZamani" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="MarkaModel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="marka" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="model" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EnvanterDetays" Relationship="Self.FK_EnvanterDetay_MarkaModel" FromRole="MarkaModel" ToRole="EnvanterDetay" />
+  </EntityType>
+  <EntityType Name="Personel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="konumId" Type="Int32" />
+    <Property Name="typ" Type="Int32" />
+    <Property Name="adSoyad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="birimAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="unvan" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Konum" Relationship="Self.FK_Personel_Konum" FromRole="Personel" ToRole="Konum" />
+    <NavigationProperty Name="Zimmets" Relationship="Self.FK_Zimmet_Personel" FromRole="Personel" ToRole="Zimmet" />
+  </EntityType>
+  <EntityType Name="ServisKayit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="envanterId" Type="Int32" />
+    <Property Name="envanterKodu" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="arizaSebebi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="firmaAdi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="yetkiliAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="teslimTarihi" Type="DateTime" Precision="0" />
+    <Property Name="alisTarihi" Type="DateTime" Precision="0" />
+    <Property Name="yapilanIslem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="toplamUcret" Type="Double" />
+    <Property Name="status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kaydedenPersonel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kayitZamani" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Envanter" Relationship="Self.FK_ServisKayit_Envanter" FromRole="ServisKayit" ToRole="Envanter" />
+  </EntityType>
+  <EntityType Name="SonSiraNo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriKodu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="sonkullanilanNo" Type="Int32" />
+  </EntityType>
+  <EntityType Name="TurSiraNo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriKodu" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+    <Property Name="sonkullanilanNo" Type="Int32" />
+  </EntityType>
+  <EntityType Name="VarlikKategori">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="categoryType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="categoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="kategoriAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Envanters" Relationship="Self.FK_Envanter_VarlikKategori" FromRole="VarlikKategori" ToRole="Envanter" />
+  </EntityType>
+  <EntityType Name="Zimmet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="envanterId" Type="Int32" />
+    <Property Name="envanterKodu" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="personelId" Type="Int32" />
+    <Property Name="birimAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="teslimTarihi" Type="DateTime" Precision="0" />
+    <Property Name="iadeTarihi" Type="DateTime" Precision="0" />
+    <Property Name="zimmetTuru" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="zimmetNotu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="lokasyon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="odaNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="Boolean" />
+    <Property Name="kaydedenPersonel" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="kayitZamani" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Envanter" Relationship="Self.FK_Zimmet_Envanter" FromRole="Zimmet" ToRole="Envanter" />
+    <NavigationProperty Name="Personel" Relationship="Self.FK_Zimmet_Personel" FromRole="Zimmet" ToRole="Personel" />
+  </EntityType>
+  <Association Name="FK_Envanter_EnvanterTür">
+    <End Role="EnvanterTür" Type="Self.EnvanterTür" Multiplicity="0..1" />
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnvanterTür">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Envanter">
+        <PropertyRef Name="turId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Envanter_VarlikKategori">
+    <End Role="VarlikKategori" Type="Self.VarlikKategori" Multiplicity="0..1" />
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VarlikKategori">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Envanter">
+        <PropertyRef Name="kategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnvanterDetay_Envanter">
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="0..1" />
+    <End Role="EnvanterDetay" Type="Self.EnvanterDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Envanter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EnvanterDetay">
+        <PropertyRef Name="envanterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnvanterDosya_Envanter">
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="0..1" />
+    <End Role="EnvanterDosya" Type="Self.EnvanterDosya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Envanter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EnvanterDosya">
+        <PropertyRef Name="envanterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnvanterSKDisi_Envanter">
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="0..1" />
+    <End Role="EnvanterSKDisi" Type="Self.EnvanterSKDisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Envanter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EnvanterSKDisi">
+        <PropertyRef Name="envanterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServisKayit_Envanter">
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="0..1" />
+    <End Role="ServisKayit" Type="Self.ServisKayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Envanter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ServisKayit">
+        <PropertyRef Name="envanterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zimmet_Envanter">
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="0..1" />
+    <End Role="Zimmet" Type="Self.Zimmet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Envanter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Zimmet">
+        <PropertyRef Name="envanterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnvanterDetay_MarkaModel">
+    <End Role="MarkaModel" Type="Self.MarkaModel" Multiplicity="0..1" />
+    <End Role="EnvanterDetay" Type="Self.EnvanterDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MarkaModel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EnvanterDetay">
+        <PropertyRef Name="modelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personel_Konum">
+    <End Role="Konum" Type="Self.Konum" Multiplicity="0..1" />
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Konum">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="konumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zimmet_Personel">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+    <End Role="Zimmet" Type="Self.Zimmet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Zimmet">
+        <PropertyRef Name="personelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EnvanterSistemiEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Envanters" EntityType="Self.Envanter" />
+    <EntitySet Name="EnvanterDetays" EntityType="Self.EnvanterDetay" />
+    <EntitySet Name="EnvanterDosyas" EntityType="Self.EnvanterDosya" />
+    <EntitySet Name="EnvanterSKDisis" EntityType="Self.EnvanterSKDisi" />
+    <EntitySet Name="EnvanterTür" EntityType="Self.EnvanterTür" />
+    <EntitySet Name="Konums" EntityType="Self.Konum" />
+    <EntitySet Name="LogKayits" EntityType="Self.LogKayit" />
+    <EntitySet Name="MarkaModels" EntityType="Self.MarkaModel" />
+    <EntitySet Name="Personels" EntityType="Self.Personel" />
+    <EntitySet Name="ServisKayits" EntityType="Self.ServisKayit" />
+    <EntitySet Name="SonSiraNoes" EntityType="Self.SonSiraNo" />
+    <EntitySet Name="TurSiraNoes" EntityType="Self.TurSiraNo" />
+    <EntitySet Name="VarlikKategoris" EntityType="Self.VarlikKategori" />
+    <EntitySet Name="Zimmets" EntityType="Self.Zimmet" />
+    <AssociationSet Name="FK_Envanter_EnvanterTür" Association="Self.FK_Envanter_EnvanterTür">
+      <End Role="EnvanterTür" EntitySet="EnvanterTür" />
+      <End Role="Envanter" EntitySet="Envanters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Envanter_VarlikKategori" Association="Self.FK_Envanter_VarlikKategori">
+      <End Role="VarlikKategori" EntitySet="VarlikKategoris" />
+      <End Role="Envanter" EntitySet="Envanters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnvanterDetay_Envanter" Association="Self.FK_EnvanterDetay_Envanter">
+      <End Role="Envanter" EntitySet="Envanters" />
+      <End Role="EnvanterDetay" EntitySet="EnvanterDetays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnvanterDosya_Envanter" Association="Self.FK_EnvanterDosya_Envanter">
+      <End Role="Envanter" EntitySet="Envanters" />
+      <End Role="EnvanterDosya" EntitySet="EnvanterDosyas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnvanterSKDisi_Envanter" Association="Self.FK_EnvanterSKDisi_Envanter">
+      <End Role="Envanter" EntitySet="Envanters" />
+      <End Role="EnvanterSKDisi" EntitySet="EnvanterSKDisis" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServisKayit_Envanter" Association="Self.FK_ServisKayit_Envanter">
+      <End Role="Envanter" EntitySet="Envanters" />
+      <End Role="ServisKayit" EntitySet="ServisKayits" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zimmet_Envanter" Association="Self.FK_Zimmet_Envanter">
+      <End Role="Envanter" EntitySet="Envanters" />
+      <End Role="Zimmet" EntitySet="Zimmets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnvanterDetay_MarkaModel" Association="Self.FK_EnvanterDetay_MarkaModel">
+      <End Role="MarkaModel" EntitySet="MarkaModels" />
+      <End Role="EnvanterDetay" EntitySet="EnvanterDetays" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personel_Konum" Association="Self.FK_Personel_Konum">
+      <End Role="Konum" EntitySet="Konums" />
+      <End Role="Personel" EntitySet="Personels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zimmet_Personel" Association="Self.FK_Zimmet_Personel">
+      <End Role="Personel" EntitySet="Personels" />
+      <End Role="Zimmet" EntitySet="Zimmets" />
+    </AssociationSet>
+    <EntitySet Name="Birimlers" EntityType="EnvanterSistemiModel.Birimler" />
+  </EntityContainer>
+  <EntityType Name="Birimler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="birimAdi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

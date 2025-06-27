@@ -1,0 +1,209 @@
+﻿@model List<EnvanterSistemi.Models.Envanter>
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTable - Mazer Admin Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Temalar/mazer-main/dist/assets/css/bootstrap.css">
+
+    <link rel="stylesheet" href="~/Temalar/mazer-main/dist/assets/vendors/simple-datatables/style.css">
+
+    <link rel="stylesheet" href="~/Temalar/mazer-main/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="~/Temalar/mazer-main/dist/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/Temalar/mazer-main/dist/assets/css/app.css">
+    <link rel="shortcut icon" href="~/Temalar/mazer-main/dist/assets/images/favicon.svg" type="image/x-icon">
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#DrpBirim").change(function () {
+                var birim = $("#DrpBirim").val();
+                $.ajax({
+                    url: '/Zimmet/PersonelGetir',
+                    data: { p: birim },
+                    type: "POST",
+                    dataType: "Json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#DrpPersonel').empty();
+                        for (var i = 0; i < data.length; i++) {
+                            $('#DrpPersonel').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            $("#lokasyon").change(function () {
+                var birim = $("#lokasyon").val();
+                $.ajax({
+                    url: '/Zimmet/OdaGetir',
+                    data: { p: birim },
+                    type: "POST",
+                    dataType: "Json",
+                    success: function (data) {
+                        console.log(data);
+                        $('#DrpOda').empty();
+                        for (var i = 0; i < data.length; i++) {
+                            $('#DrpOda').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    @if (TempData["Hata"] != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Hatalı İşlem !!!</strong><br />@TempData["Hata"]
+        </div>
+    }
+    @if (TempData["Mesaj"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>İşlem Başarılı</strong><br />@TempData["Mesaj"]
+        </div>
+    }
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Zimmet Edilebilecek Ürünler Listesi</h3>
+                <p class="text-subtitle text-muted"></p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Envanter Listesi</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("Ekle", "Zimmet", FormMethod.Post))
+    {
+        <section class="section">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped" id="table1">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="checkBoxAll" /></th>
+                                @*<th>Id</th>*@
+                                <th>Kategori Adı</th>
+                                <th>Tür Adı</th>
+                                <th>Kodu</th>
+                                <th>İlgili Birim</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><input type="checkbox" class="chkCheckBoxId" value="@item.id" name="kayitID" /></td>
+                                    @*<td>@item.id</td>*@
+                                    <td>@item.VarlikKategori.kategoriAdi</td>
+                                    <td>@item.EnvanterTür.turAdi</td>
+                                    <td>@item.kodu</td>
+                                    <td>@item.ilgiliBirim</td>
+                                    <td>@item.zstatus</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <div class="form-group">
+                        @Html.DropDownList("zimmetturu", new List<SelectListItem>
+                            {
+                       new SelectListItem{ Text="--Zimmet Türü Seçiniz--", Value = "yok" },
+                                new SelectListItem{ Text="Personel", Value = "Personel" },
+                                new SelectListItem{ Text="Birim/Depo", Value = "Birim/Depo" },
+                                new SelectListItem{ Text="Birim/Ortak", Value = "Birim/Ortak" },
+                             }, new { @placeholder = "Zimmet Türü", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownList("DrpBirim", (List<SelectListItem>)ViewBag.birimler, "--Birim Seçiniz--", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownList("DrpPersonel", (List<SelectListItem>)ViewBag.personel, "--Personel Seçiniz--", new { @class = "form-control" })
+                    </div>
+
+                    <div class="form-group">
+                        @Html.DropDownList("lokasyon", new List<SelectListItem>
+                            {
+                       new SelectListItem{ Text="--Lokasyon Seçiniz--", Value = "yok" },
+                                new SelectListItem{ Text="Merkez", Value = "Merkez" },
+                                new SelectListItem{ Text="Şube 1", Value = "Şube 1" },
+                                new SelectListItem{ Text="Şube 2", Value = "Şube 2" },
+                             }, new { @placeholder = "Zimmet Türü", @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.DropDownList("DrpOda", (List<SelectListItem>)ViewBag.odaNo, "--Oda Numarası Seçiniz--", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Açıklama")
+                        @Html.TextArea("aciklama", "", new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        @Html.TextBox("username", User.Identity.Name, new { style = "display: none;" })
+                    </div>
+                    <div>
+                        @Html.TextBox("TeslimTarihi", "", new {@class="form-control",@placeholder="Teslim Tarihi Giriniz"})
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+        </section>
+
+        <div class="form-group" style="float:left">
+            <button class="btn btn-success">ZİMMET KAYDET</button>
+            &nbsp;<a href="javascript: history.go(-1)" class="btn btn-outline-dark">ÖNCEKİ SAYFA</a>
+        </div>
+    }
+</div>
+    <script>
+        $(document).ready(function () {
+            $('#checkBoxAll').click(function () {
+                if ($(this).is(":checked"))
+                    $('.chkCheckBoxId').prop('checked', true)
+                else
+                    $('.chkCheckBoxId').prop('checked', false)
+            });
+        });
+        </script>
+        <script src="~/Temalar/mazer-main/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/Temalar/mazer-main/dist/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/Temalar/mazer-main/dist/assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);</script>
+
+    <script src="~/Temalar/mazer-main/dist/assets/js/main.js"></script>
+</body>
+
+</html>
+

@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EnvanterSistemiModelStoreContainer" CdmEntityContainer="EnvanterSistemiEntities">
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="adSoyad" ColumnName="adSoyad" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="rol" ColumnName="rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Envanters">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.Envanter">
+        <MappingFragment StoreEntitySet="Envanter">
+          <ScalarProperty Name="zstatus" ColumnName="zstatus" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+          <ScalarProperty Name="turId" ColumnName="turId" />
+          <ScalarProperty Name="kodu" ColumnName="kodu" />
+          <ScalarProperty Name="ilgiliBirim" ColumnName="ilgiliBirim" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="kaydedenPersonel" ColumnName="kaydedenPersonel" />
+          <ScalarProperty Name="kayitTarihi" ColumnName="kayitTarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnvanterDetays">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.EnvanterDetay">
+        <MappingFragment StoreEntitySet="EnvanterDetay">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="envanterId" ColumnName="envanterId" />
+          <ScalarProperty Name="envanterKodu" ColumnName="envanterKodu" />
+          <ScalarProperty Name="envanterTuru" ColumnName="envanterTuru" />
+          <ScalarProperty Name="modelId" ColumnName="modelId" />
+          <ScalarProperty Name="seriNo" ColumnName="seriNo" />
+          <ScalarProperty Name="pcTuru" ColumnName="pcTuru" />
+          <ScalarProperty Name="islemci" ColumnName="islemci" />
+          <ScalarProperty Name="hdd" ColumnName="hdd" />
+          <ScalarProperty Name="ssd" ColumnName="ssd" />
+          <ScalarProperty Name="ram" ColumnName="ram" />
+          <ScalarProperty Name="ek" ColumnName="ek" />
+          <ScalarProperty Name="lanMac" ColumnName="lanMac" />
+          <ScalarProperty Name="wifiMac" ColumnName="wifiMac" />
+          <ScalarProperty Name="imei1" ColumnName="imei1" />
+          <ScalarProperty Name="imei2" ColumnName="imei2" />
+          <ScalarProperty Name="plaka" ColumnName="plaka" />
+          <ScalarProperty Name="hatNo" ColumnName="hatNo" />
+          <ScalarProperty Name="simId" ColumnName="simId" />
+          <ScalarProperty Name="onyuzNo" ColumnName="onyuzNo" />
+          <ScalarProperty Name="arkayuzNo" ColumnName="arkayuzNo" />
+          <ScalarProperty Name="kgbNo" ColumnName="kgbNo" />
+          <ScalarProperty Name="mobilyaCinsi" ColumnName="mobilyaCinsi" />
+          <ScalarProperty Name="cekmece" ColumnName="cekmece" />
+          <ScalarProperty Name="kapak" ColumnName="kapak" />
+          <ScalarProperty Name="en" ColumnName="en" />
+          <ScalarProperty Name="boy" ColumnName="boy" />
+          <ScalarProperty Name="yukseklik" ColumnName="yukseklik" />
+          <ScalarProperty Name="kaydedenPersonel" ColumnName="kaydedenPersonel" />
+          <ScalarProperty Name="kayitZamani" ColumnName="kayitZamani" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnvanterDosyas">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.EnvanterDosya">
+        <MappingFragment StoreEntitySet="EnvanterDosya">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="envanterId" ColumnName="envanterId" />
+          <ScalarProperty Name="envanterKodu" ColumnName="envanterKodu" />
+          <ScalarProperty Name="dosyaTuru" ColumnName="dosyaTuru" />
+          <ScalarProperty Name="dosyaYolu" ColumnName="dosyaYolu" />
+          <ScalarProperty Name="kaydedenPersonel" ColumnName="kaydedenPersonel" />
+          <ScalarProperty Name="kayitZamani" ColumnName="kayitZamani" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnvanterSKDisis">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.EnvanterSKDisi">
+        <MappingFragment StoreEntitySet="EnvanterSKDisi">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="envanterId" ColumnName="envanterId" />
+          <ScalarProperty Name="envanterKodu" ColumnName="envanterKodu" />
+          <ScalarProperty Name="islemTuru" ColumnName="islemTuru" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="kaydedenPersonel" ColumnName="kaydedenPersonel" />
+          <ScalarProperty Name="kayitZamani" ColumnName="kayitZamani" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EnvanterTür">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.EnvanterTür">
+        <MappingFragment StoreEntitySet="EnvanterTür">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kategoriId" ColumnName="kategoriId" />
+          <ScalarProperty Name="typeName" ColumnName="typeName" />
+          <ScalarProperty Name="turAdi" ColumnName="turAdi" />
+          <ScalarProperty Name="kategoriKodu" ColumnName="kategoriKodu" />
+          <ScalarProperty Name="ortakKod" ColumnName="ortakKod" />
+          <ScalarProperty Name="bgys" ColumnName="bgys" />
+          <ScalarProperty Name="it" ColumnName="it" />
+          <ScalarProperty Name="kalite" ColumnName="kalite" />
+          <ScalarProperty Name="ilgiliBirim" ColumnName="ilgiliBirim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Konums">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.Konum">
+        <MappingFragment StoreEntitySet="Konum">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="odaNo" ColumnName="odaNo" />
+          <ScalarProperty Name="lokasyon" ColumnName="lokasyon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogKayits">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.LogKayit">
+        <MappingFragment StoreEntitySet="LogKayit">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="envanterId" ColumnName="envanterId" />
+          <ScalarProperty Name="envanterKodu" ColumnName="envanterKodu" />
+          <ScalarProperty Name="logKonusu" ColumnName="logKonusu" />
+          <ScalarProperty Name="aciklama" ColumnName="aciklama" />
+          <ScalarProperty Name="kaydedenPersonel" ColumnName="kaydedenPersonel" />
+          <ScalarProperty Name="kayitZamani" ColumnName="kayitZamani" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MarkaModels">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.MarkaModel">
+        <MappingFragment StoreEntitySet="MarkaModel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="marka" ColumnName="marka" />
+          <ScalarProperty Name="model" ColumnName="model" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personels">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.Personel">
+        <MappingFragment StoreEntitySet="Personel">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="konumId" ColumnName="konumId" />
+          <ScalarProperty Name="typ" ColumnName="typ" />
+          <ScalarProperty Name="adSoyad" ColumnName="adSoyad" />
+          <ScalarProperty Name="birimAdi" ColumnName="birimAdi" />
+          <ScalarProperty Name="unvan" ColumnName="unvan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServisKayits">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.ServisKayit">
+        <MappingFragment StoreEntitySet="ServisKayit">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="envanterId" ColumnName="envanterId" />
+          <ScalarProperty Name="envanterKodu" ColumnName="envanterKodu" />
+          <ScalarProperty Name="arizaSebebi" ColumnName="arizaSebebi" />
+          <ScalarProperty Name="firmaAdi" ColumnName="firmaAdi" />
+          <ScalarProperty Name="yetkiliAdi" ColumnName="yetkiliAdi" />
+          <ScalarProperty Name="teslimTarihi" ColumnName="teslimTarihi" />
+          <ScalarProperty Name="alisTarihi" ColumnName="alisTarihi" />
+          <ScalarProperty Name="yapilanIslem" ColumnName="yapilanIslem" />
+          <ScalarProperty Name="toplamUcret" ColumnName="toplamUcret" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="kaydedenPersonel" ColumnName="kaydedenPersonel" />
+          <ScalarProperty Name="kayitZamani" ColumnName="kayitZamani" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SonSiraNoes">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.SonSiraNo">
+        <MappingFragment StoreEntitySet="SonSiraNo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kategoriKodu" ColumnName="kategoriKodu" />
+          <ScalarProperty Name="sonkullanilanNo" ColumnName="sonkullanilanNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TurSiraNoes">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.TurSiraNo">
+        <MappingFragment StoreEntitySet="TurSiraNo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kategoriKodu" ColumnName="kategoriKodu" />
+          <ScalarProperty Name="sonkullanilanNo" ColumnName="sonkullanilanNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VarlikKategoris">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.VarlikKategori">
+        <MappingFragment StoreEntitySet="VarlikKategori">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="categoryType" ColumnName="categoryType" />
+          <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+          <ScalarProperty Name="kategoriAdi" ColumnName="kategoriAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Zimmets">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.Zimmet">
+        <MappingFragment StoreEntitySet="Zimmet">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="envanterId" ColumnName="envanterId" />
+          <ScalarProperty Name="envanterKodu" ColumnName="envanterKodu" />
+          <ScalarProperty Name="personelId" ColumnName="personelId" />
+          <ScalarProperty Name="birimAdi" ColumnName="birimAdi" />
+          <ScalarProperty Name="teslimTarihi" ColumnName="teslimTarihi" />
+          <ScalarProperty Name="iadeTarihi" ColumnName="iadeTarihi" />
+          <ScalarProperty Name="zimmetTuru" ColumnName="zimmetTuru" />
+          <ScalarProperty Name="zimmetNotu" ColumnName="zimmetNotu" />
+          <ScalarProperty Name="lokasyon" ColumnName="lokasyon" />
+          <ScalarProperty Name="odaNo" ColumnName="odaNo" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="kaydedenPersonel" ColumnName="kaydedenPersonel" />
+          <ScalarProperty Name="kayitZamani" ColumnName="kayitZamani" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Birimlers">
+      <EntityTypeMapping TypeName="EnvanterSistemiModel.Birimler">
+        <MappingFragment StoreEntitySet="Birimler">
+          <ScalarProperty Name="birimAdi" ColumnName="birimAdi" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

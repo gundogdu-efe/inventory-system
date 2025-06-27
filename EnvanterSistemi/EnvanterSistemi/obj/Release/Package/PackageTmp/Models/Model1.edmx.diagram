@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="320d4592359e4510bd5518459cd5595c" Name="Diagram1">
+        <EntityTypeShape EntityType="EnvanterSistemiModel.Admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.Envanter" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.EnvanterDetay" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.EnvanterDosya" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.EnvanterSKDisi" Width="1.5" PointX="5.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.EnvanterTür" Width="1.5" PointX="0.75" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.Konum" Width="1.5" PointX="0.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.LogKayit" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.MarkaModel" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.Personel" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.ServisKayit" Width="1.5" PointX="5.25" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.SonSiraNo" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.TurSiraNo" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.VarlikKategori" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.Zimmet" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <AssociationConnector Association="EnvanterSistemiModel.FK_Envanter_EnvanterTür" ManuallyRouted="false" />
+        <AssociationConnector Association="EnvanterSistemiModel.FK_Envanter_VarlikKategori" ManuallyRouted="false" />
+        <AssociationConnector Association="EnvanterSistemiModel.FK_EnvanterDetay_Envanter" ManuallyRouted="false" />
+        <AssociationConnector Association="EnvanterSistemiModel.FK_EnvanterDosya_Envanter" ManuallyRouted="false" />
+        <AssociationConnector Association="EnvanterSistemiModel.FK_EnvanterSKDisi_Envanter" ManuallyRouted="false" />
+        <AssociationConnector Association="EnvanterSistemiModel.FK_ServisKayit_Envanter" ManuallyRouted="false" />
+        <AssociationConnector Association="EnvanterSistemiModel.FK_Zimmet_Envanter" ManuallyRouted="false" />
+        <AssociationConnector Association="EnvanterSistemiModel.FK_EnvanterDetay_MarkaModel" ManuallyRouted="false" />
+        <AssociationConnector Association="EnvanterSistemiModel.FK_Personel_Konum" ManuallyRouted="false" />
+        <AssociationConnector Association="EnvanterSistemiModel.FK_Zimmet_Personel" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EnvanterSistemiModel.Birimler" Width="1.5" PointX="7.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,77 @@
+﻿@model List<EnvanterSistemi.Models.Envanter>
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        $("#DrpKategori").change(function () {
+            var id = $("#DrpKategori").val();
+            $.ajax({
+                url: '/Envanter/TurGetir',
+                data: { p: id },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#DrpTur').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#DrpTur').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                    }
+                }
+
+            });
+        });
+    });
+</script>
+<h2>@ViewBag.kodu Bilgi Guncelleme Formu</h2>
+
+    @if (TempData["Hata"] != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Hatalı İşlem !!!</strong><br />@TempData["Hata"]
+        </div>
+    }
+    @if (TempData["Mesaj"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>İşlem Başarılı</strong><br />@TempData["Mesaj"]
+        </div>
+    }
+
+<div class="col-3" style="margin-left:0px">
+    @using (Html.BeginForm("Guncelle", "Envanter", FormMethod.Post))
+    {
+        <div class="form-group">
+            @Html.TextBox("envanterid",(object)ViewBag.envanterid, new { style = "display: none;" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Birimler")
+            @Html.DropDownList("DrpBirim", (List<SelectListItem>)ViewBag.Birimler, "--Marka Seçiniz--", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.Label("Kategoriler")
+            @Html.DropDownList("DrpKategori", (List<SelectListItem>)ViewBag.kategoriler, "--Marka Seçiniz--", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Türler")
+            @Html.DropDownList("DrpTur", (List<SelectListItem>)ViewBag.turler, "--Marka Seçiniz--", new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Açıklama")
+            @Html.TextArea("aciklama", (string)ViewBag.aciklama, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.TextBox("username", User.Identity.Name, new { style = "display: none;" })
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success">GÜNCELLE</button>
+        </div>
+    }
+</div>
+
+
+
+

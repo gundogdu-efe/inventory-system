@@ -1,0 +1,131 @@
+﻿@model List<EnvanterSistemi.Models.Zimmet>
+@{
+    ViewBag.Title = "BaskiAl";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DataTable - Mazer Admin Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Temalar/mazer-main/dist/assets/css/bootstrap.css">
+
+    <link rel="stylesheet" href="~/Temalar/mazer-main/dist/assets/vendors/simple-datatables/style.css">
+
+    <link rel="stylesheet" href="~/Temalar/mazer-main/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="~/Temalar/mazer-main/dist/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/Temalar/mazer-main/dist/assets/css/app.css">
+    <link rel="shortcut icon" href="~/Temalar/mazer-main/dist/assets/images/favicon.svg" type="image/x-icon">
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    @if (TempData["Hata"] != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Hatalı İşlem !!!</strong><br />@TempData["Hata"]
+        </div>
+    }
+    @if (TempData["Mesaj"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>İşlem Başarılı</strong><br />@TempData["Mesaj"]
+        </div>
+    }
+<div class="page-heading">
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Zimmet Listesi</h3>
+                <p class="text-subtitle text-muted"></p>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Zimmet Yönetimi</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    @using (Html.BeginForm("BaskiAl", "Zimmet", FormMethod.Post))
+    {
+        <section class="section">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped" id="table1">
+                        <thead>
+
+                            <tr>
+                                <th><input type="checkbox" id="checkBoxAll" /></th>
+                                <th>Envanter ID</th>
+                                <th>Envanter Kodu</th>
+                                <th>Personel ID</th>
+                                <th>Birim Adı</th>
+                                <th>Teslim Tarihi</th>
+                                <th>İade Tarihi</th>
+                                <th>Zimmet Türü</th>
+                                <th>Zimmet Notu</th>
+                                <th>Lokasyon</th>
+                                <th>Oda No</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><input type="checkbox" class="chkCheckBoxId" value="@item.id" name="kayitID" /></td>
+                                    <td>@item.envanterId</td>
+                                    <td>@item.envanterKodu</td>
+                                    <td>@item.Personel.adSoyad</td>
+                                    <td>@item.birimAdi</td>
+                                    <td>@item.teslimTarihi</td>
+                                    <td>@item.iadeTarihi</td>
+                                    <td>@item.zimmetTuru</td>
+                                    <td>@item.zimmetNotu</td>
+                                    <td>@item.lokasyon</td>
+                                    <td>@item.odaNo</td>
+                                    <td>@item.status</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </section>
+        <div class="form-group" style="float:left">
+            <button class="btn btn-success">BASKI AL</button>
+            &nbsp;<a href="javascript: history.go(-1)" class="btn btn-outline-dark">ÖNCEKİ SAYFA</a>
+        </div>
+    }
+    </div>
+    <script src="~/Temalar/mazer-main/dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="~/Temalar/mazer-main/dist/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/Temalar/mazer-main/dist/assets/vendors/simple-datatables/simple-datatables.js"></script>
+    <script>
+        // Simple Datatable
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);</script>
+
+    <script src="~/Temalar/mazer-main/dist/assets/js/main.js"></script>
+</body>
+
+</html>
+
+
+

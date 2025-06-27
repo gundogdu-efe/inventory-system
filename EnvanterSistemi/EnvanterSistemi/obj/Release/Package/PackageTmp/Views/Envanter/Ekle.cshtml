@@ -1,0 +1,80 @@
+﻿@model EnvanterSistemi.ViewModel.Listeler
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        $("#DrpKategori").change(function () {
+            var id = $("#DrpKategori").val();
+            $.ajax({
+                url: '/Envanter/TurGetir',
+                data: { p: id },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#DrpTur').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#DrpTur').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                    }
+                }
+
+            });
+        });
+    });
+</script>
+<script>
+    $(function () {
+        $("#DrpTur").change(function () {
+            var drpvalue = $("#DrpTur").val();
+            $.ajax({
+                url: '/Envanter/KodGetir',
+                data: { p: drpvalue },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#txtKodu').empty();
+                    var txt = $("#txtKodu").val(data);
+                }
+            });
+        });
+    });
+</script>
+<h2>Envanter Ekleme Formu</h2>
+@using (Html.BeginForm("Ekle","Envanter",FormMethod.Post))
+{ 
+<div class="col-3" style="margin-left:0px">
+    <div class="form-group">
+        @Html.Label("Kategori")
+        @Html.DropDownList("DrpKategori", Model.Kategoriler, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Tür ID")
+        @Html.DropDownList("DrpTur", Model.EnvanterTur, new { @class = "form-control" })
+        @*@Html.TextBox("turID", "", new { @placeholder = "Tür ID", @class = "form-control" })*@
+    </div>
+    <div class="form-group">
+        @Html.Label("Kodu")
+        @Html.TextBox("txtKodu", "", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.Label("İlgili Birim")
+        @Html.DropDownList("ilgiliBirim", Model.Birimler, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.Label("Açıklama")
+        @Html.TextArea("aciklama", "", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.TextBox("username", User.Identity.Name, new { style = "display: none;" })
+    </div>
+    <div class="form-group">
+        <button class="btn btn-success">KAYDET</button>
+        &nbsp;<a href="javascript: history.go(-1)" class="btn btn-outline-dark">ÖNCEKİ SAYFA</a>
+    </div>
+
+</div>
+}

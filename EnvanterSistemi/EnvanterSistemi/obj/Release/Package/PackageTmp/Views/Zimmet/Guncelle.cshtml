@@ -1,0 +1,125 @@
+﻿
+@model List<EnvanterSistemi.Models.Envanter>
+@{
+    ViewBag.Title = "Guncelle";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        $("#DrpBirim").change(function () {
+            var birim = $("#DrpBirim").val();
+            $.ajax({
+                url: '/Zimmet/PersonelGetir',
+                data: { p: birim },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#DrpPersonel').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#DrpPersonel').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                    }
+                }
+            });
+        });
+    });
+</script>
+<script>
+    $(function () {
+        $("#lokasyon").change(function () {
+            var birim = $("#lokasyon").val();
+            $.ajax({
+                url: '/Zimmet/OdaGetir',
+                data: { p: birim },
+                type: "POST",
+                dataType: "Json",
+                success: function (data) {
+                    console.log(data);
+                    $('#DrpOda').empty();
+                    for (var i = 0; i < data.length; i++) {
+                        $('#DrpOda').append("<option value='" + data[i].Value + "'>" + data[i].Text + "</Option>");
+                    }
+                }
+            });
+        });
+    });
+</script>
+<h2>@ViewBag.envanterkodu Zimmet Değişiklik Formu</h2>
+
+@if (TempData["Hata"] != null)
+{
+    <div class="alert alert-danger">
+        <strong>Hatalı İşlem !!!</strong><br />@TempData["Hata"]
+    </div>
+}
+@if (TempData["Mesaj"] != null)
+{
+    <div class="alert alert-success">
+        <strong>İşlem Başarılı</strong><br />@TempData["Mesaj"]
+    </div>
+}
+
+<div class="col-3" style="margin-left:0px">
+    @using (Html.BeginForm("Guncelle", "Zimmet", FormMethod.Post))
+    {
+        <div>
+            <div class="form-group">
+                @Html.TextBox("envanterid", (object)ViewBag.envanterid, new { style = "display: none;" })
+            </div>
+            <div class="form-group">
+                @Html.TextBox("envanterkodu", (object)ViewBag.envanterkodu, new { style = "display: none;" })
+            </div>
+            <div class="form-group">
+                @Html.TextBox("zimmetid", (object)ViewBag.zimmetid, new { style = "display: none;" })
+            </div>
+            <div class="form-group">
+                @Html.DropDownList("zimmetturu", new List<SelectListItem>
+                    {
+               new SelectListItem{ Text="--Zimmet Türü Seçiniz--", Value = "yok" },
+                        new SelectListItem{ Text="Personel", Value = "Personel" },
+                        new SelectListItem{ Text="Birim/Depo", Value = "Birim/Depo" },
+                        new SelectListItem{ Text="Birim/Ortak", Value = "Birim/Ortak" },
+                     }, new { @placeholder = "Zimmet Türü", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.DropDownList("DrpBirim", (List<SelectListItem>)ViewBag.birimler, "--Birim Seçiniz--", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.DropDownList("DrpPersonel", (List<SelectListItem>)ViewBag.personel, "--Personel Seçiniz--", new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                @Html.DropDownList("lokasyon", new List<SelectListItem>
+                    {
+               new SelectListItem{ Text="--Lokasyon Seçiniz--", Value = "yok" },
+                        new SelectListItem{ Text="Merkez", Value = "Merkez" },
+                        new SelectListItem{ Text="Şube 1", Value = "Şube 1" },
+                        new SelectListItem{ Text="Şube 2", Value = "Şube 2" },
+                     }, new { @placeholder = "Zimmet Türü", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.DropDownList("DrpOda", (List<SelectListItem>)ViewBag.odaNo, "--Oda Numarası Seçiniz--", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.Label("Açıklama")
+                @Html.TextArea("aciklama", "", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.TextBox("username", User.Identity.Name, new { style = "display: none;" })
+            </div>
+            <div>
+                @Html.TextBox("TeslimTarihi", "", new { @class = "form-control", @placeholder = "Teslim Tarihi Giriniz" })
+            </div>
+            <br />
+            <div class="form-group">
+                <button class="btn btn-success">GÜNCELLE</button>
+            </div>
+
+        </div>
+    }
+</div>
+
+
+
+

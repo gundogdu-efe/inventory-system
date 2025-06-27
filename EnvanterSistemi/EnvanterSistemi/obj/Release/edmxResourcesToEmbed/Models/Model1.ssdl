@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EnvanterSistemiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="adSoyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="photo" Type="nvarchar" MaxLength="500" />
+    <Property Name="rol" Type="nvarchar" MaxLength="2" />
+    <Property Name="status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Birimler">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="birimAdi" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="Envanter">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategoriId" Type="int" />
+    <Property Name="turId" Type="int" />
+    <Property Name="kodu" Type="nvarchar" MaxLength="8" />
+    <Property Name="ilgiliBirim" Type="nvarchar" MaxLength="150" />
+    <Property Name="aciklama" Type="nvarchar(max)" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="zstatus" Type="bit" />
+    <Property Name="kaydedenPersonel" Type="nvarchar" MaxLength="50" />
+    <Property Name="kayitTarihi" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EnvanterDetay">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="envanterId" Type="int" />
+    <Property Name="envanterKodu" Type="nvarchar" MaxLength="8" />
+    <Property Name="envanterTuru" Type="nvarchar" MaxLength="255" />
+    <Property Name="modelId" Type="int" />
+    <Property Name="seriNo" Type="nvarchar" MaxLength="500" />
+    <Property Name="pcTuru" Type="nvarchar" MaxLength="255" />
+    <Property Name="islemci" Type="nvarchar" MaxLength="50" />
+    <Property Name="hdd" Type="nvarchar" MaxLength="50" />
+    <Property Name="ssd" Type="nvarchar" MaxLength="50" />
+    <Property Name="ram" Type="nvarchar" MaxLength="50" />
+    <Property Name="ek" Type="nvarchar" MaxLength="50" />
+    <Property Name="lanMac" Type="nvarchar" MaxLength="50" />
+    <Property Name="wifiMac" Type="nvarchar" MaxLength="50" />
+    <Property Name="imei1" Type="nvarchar" MaxLength="50" />
+    <Property Name="imei2" Type="nvarchar" MaxLength="50" />
+    <Property Name="plaka" Type="nvarchar" MaxLength="50" />
+    <Property Name="hatNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="simId" Type="nvarchar" MaxLength="150" />
+    <Property Name="onyuzNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="arkayuzNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="kgbNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="mobilyaCinsi" Type="nvarchar" MaxLength="50" />
+    <Property Name="cekmece" Type="int" />
+    <Property Name="kapak" Type="int" />
+    <Property Name="en" Type="int" />
+    <Property Name="boy" Type="int" />
+    <Property Name="yukseklik" Type="int" />
+    <Property Name="kaydedenPersonel" Type="nvarchar" MaxLength="50" />
+    <Property Name="kayitZamani" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EnvanterDosya">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="envanterId" Type="int" />
+    <Property Name="envanterKodu" Type="nvarchar" MaxLength="8" />
+    <Property Name="dosyaTuru" Type="nvarchar" MaxLength="50" />
+    <Property Name="dosyaYolu" Type="nvarchar" MaxLength="255" />
+    <Property Name="kaydedenPersonel" Type="nvarchar" MaxLength="50" />
+    <Property Name="kayitZamani" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EnvanterSKDisi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="envanterId" Type="int" />
+    <Property Name="envanterKodu" Type="nvarchar" MaxLength="8" />
+    <Property Name="islemTuru" Type="nvarchar" MaxLength="50" />
+    <Property Name="aciklama" Type="nvarchar(max)" />
+    <Property Name="kaydedenPersonel" Type="nvarchar" MaxLength="50" />
+    <Property Name="kayitZamani" Type="datetime" />
+  </EntityType>
+  <EntityType Name="EnvanterTür">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategoriId" Type="int" />
+    <Property Name="typeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="turAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="kategoriKodu" Type="nvarchar" MaxLength="50" />
+    <Property Name="ortakKod" Type="nvarchar" MaxLength="50" />
+    <Property Name="bgys" Type="nvarchar" MaxLength="1" />
+    <Property Name="it" Type="nvarchar" MaxLength="1" />
+    <Property Name="kalite" Type="nvarchar" MaxLength="1" />
+    <Property Name="ilgiliBirim" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Konum">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="odaNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="lokasyon" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LogKayit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="envanterId" Type="int" />
+    <Property Name="envanterKodu" Type="nvarchar" MaxLength="8" />
+    <Property Name="logKonusu" Type="nvarchar" MaxLength="500" />
+    <Property Name="aciklama" Type="nvarchar(max)" />
+    <Property Name="kaydedenPersonel" Type="nvarchar" MaxLength="50" />
+    <Property Name="kayitZamani" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MarkaModel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="marka" Type="nvarchar" MaxLength="50" />
+    <Property Name="model" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Personel">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="konumId" Type="int" />
+    <Property Name="typ" Type="int" />
+    <Property Name="adSoyad" Type="nvarchar" MaxLength="255" />
+    <Property Name="birimAdi" Type="varchar" MaxLength="255" />
+    <Property Name="unvan" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="ServisKayit">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="envanterId" Type="int" />
+    <Property Name="envanterKodu" Type="nvarchar" MaxLength="8" />
+    <Property Name="arizaSebebi" Type="nvarchar(max)" />
+    <Property Name="firmaAdi" Type="nvarchar" MaxLength="500" />
+    <Property Name="yetkiliAdi" Type="nvarchar" MaxLength="150" />
+    <Property Name="teslimTarihi" Type="date" />
+    <Property Name="alisTarihi" Type="date" />
+    <Property Name="yapilanIslem" Type="nvarchar" MaxLength="50" />
+    <Property Name="toplamUcret" Type="float" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="kaydedenPersonel" Type="nvarchar" MaxLength="50" />
+    <Property Name="kayitZamani" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SonSiraNo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategoriKodu" Type="nvarchar" MaxLength="3" />
+    <Property Name="sonkullanilanNo" Type="int" />
+  </EntityType>
+  <EntityType Name="TurSiraNo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategoriKodu" Type="nvarchar" MaxLength="3" />
+    <Property Name="sonkullanilanNo" Type="int" />
+  </EntityType>
+  <EntityType Name="VarlikKategori">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoryType" Type="nvarchar" MaxLength="50" />
+    <Property Name="categoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="kategoriAdi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Zimmet">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="envanterId" Type="int" />
+    <Property Name="envanterKodu" Type="nvarchar" MaxLength="8" />
+    <Property Name="personelId" Type="int" />
+    <Property Name="birimAdi" Type="nvarchar" MaxLength="150" />
+    <Property Name="teslimTarihi" Type="date" />
+    <Property Name="iadeTarihi" Type="date" />
+    <Property Name="zimmetTuru" Type="nvarchar" MaxLength="50" />
+    <Property Name="zimmetNotu" Type="nvarchar(max)" />
+    <Property Name="lokasyon" Type="nvarchar" MaxLength="50" />
+    <Property Name="odaNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="bit" />
+    <Property Name="kaydedenPersonel" Type="nvarchar" MaxLength="255" />
+    <Property Name="kayitZamani" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_Envanter_EnvanterTür">
+    <End Role="EnvanterTür" Type="Self.EnvanterTür" Multiplicity="0..1" />
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EnvanterTür">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Envanter">
+        <PropertyRef Name="turId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Envanter_VarlikKategori">
+    <End Role="VarlikKategori" Type="Self.VarlikKategori" Multiplicity="0..1" />
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VarlikKategori">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Envanter">
+        <PropertyRef Name="kategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnvanterDetay_Envanter">
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="0..1" />
+    <End Role="EnvanterDetay" Type="Self.EnvanterDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Envanter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EnvanterDetay">
+        <PropertyRef Name="envanterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnvanterDetay_MarkaModel">
+    <End Role="MarkaModel" Type="Self.MarkaModel" Multiplicity="0..1" />
+    <End Role="EnvanterDetay" Type="Self.EnvanterDetay" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MarkaModel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EnvanterDetay">
+        <PropertyRef Name="modelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnvanterDosya_Envanter">
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="0..1" />
+    <End Role="EnvanterDosya" Type="Self.EnvanterDosya" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Envanter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EnvanterDosya">
+        <PropertyRef Name="envanterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EnvanterSKDisi_Envanter">
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="0..1" />
+    <End Role="EnvanterSKDisi" Type="Self.EnvanterSKDisi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Envanter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="EnvanterSKDisi">
+        <PropertyRef Name="envanterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Personel_Konum">
+    <End Role="Konum" Type="Self.Konum" Multiplicity="0..1" />
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Konum">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="konumId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServisKayit_Envanter">
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="0..1" />
+    <End Role="ServisKayit" Type="Self.ServisKayit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Envanter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ServisKayit">
+        <PropertyRef Name="envanterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zimmet_Envanter">
+    <End Role="Envanter" Type="Self.Envanter" Multiplicity="0..1" />
+    <End Role="Zimmet" Type="Self.Zimmet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Envanter">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Zimmet">
+        <PropertyRef Name="envanterId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zimmet_Personel">
+    <End Role="Personel" Type="Self.Personel" Multiplicity="0..1" />
+    <End Role="Zimmet" Type="Self.Zimmet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Zimmet">
+        <PropertyRef Name="personelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EnvanterSistemiModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Birimler" EntityType="Self.Birimler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Envanter" EntityType="Self.Envanter" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnvanterDetay" EntityType="Self.EnvanterDetay" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnvanterDosya" EntityType="Self.EnvanterDosya" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnvanterSKDisi" EntityType="Self.EnvanterSKDisi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EnvanterTür" EntityType="Self.EnvanterTür" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Konum" EntityType="Self.Konum" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogKayit" EntityType="Self.LogKayit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MarkaModel" EntityType="Self.MarkaModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServisKayit" EntityType="Self.ServisKayit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SonSiraNo" EntityType="Self.SonSiraNo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TurSiraNo" EntityType="Self.TurSiraNo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VarlikKategori" EntityType="Self.VarlikKategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zimmet" EntityType="Self.Zimmet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Envanter_EnvanterTür" Association="Self.FK_Envanter_EnvanterTür">
+      <End Role="EnvanterTür" EntitySet="EnvanterTür" />
+      <End Role="Envanter" EntitySet="Envanter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Envanter_VarlikKategori" Association="Self.FK_Envanter_VarlikKategori">
+      <End Role="VarlikKategori" EntitySet="VarlikKategori" />
+      <End Role="Envanter" EntitySet="Envanter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnvanterDetay_Envanter" Association="Self.FK_EnvanterDetay_Envanter">
+      <End Role="Envanter" EntitySet="Envanter" />
+      <End Role="EnvanterDetay" EntitySet="EnvanterDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnvanterDetay_MarkaModel" Association="Self.FK_EnvanterDetay_MarkaModel">
+      <End Role="MarkaModel" EntitySet="MarkaModel" />
+      <End Role="EnvanterDetay" EntitySet="EnvanterDetay" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnvanterDosya_Envanter" Association="Self.FK_EnvanterDosya_Envanter">
+      <End Role="Envanter" EntitySet="Envanter" />
+      <End Role="EnvanterDosya" EntitySet="EnvanterDosya" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EnvanterSKDisi_Envanter" Association="Self.FK_EnvanterSKDisi_Envanter">
+      <End Role="Envanter" EntitySet="Envanter" />
+      <End Role="EnvanterSKDisi" EntitySet="EnvanterSKDisi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Personel_Konum" Association="Self.FK_Personel_Konum">
+      <End Role="Konum" EntitySet="Konum" />
+      <End Role="Personel" EntitySet="Personel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServisKayit_Envanter" Association="Self.FK_ServisKayit_Envanter">
+      <End Role="Envanter" EntitySet="Envanter" />
+      <End Role="ServisKayit" EntitySet="ServisKayit" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zimmet_Envanter" Association="Self.FK_Zimmet_Envanter">
+      <End Role="Envanter" EntitySet="Envanter" />
+      <End Role="Zimmet" EntitySet="Zimmet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zimmet_Personel" Association="Self.FK_Zimmet_Personel">
+      <End Role="Personel" EntitySet="Personel" />
+      <End Role="Zimmet" EntitySet="Zimmet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

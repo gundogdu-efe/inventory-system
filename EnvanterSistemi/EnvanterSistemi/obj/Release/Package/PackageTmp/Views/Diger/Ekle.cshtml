@@ -1,0 +1,33 @@
+﻿@model EnvanterSistemi.ViewModel.Listeler
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+<h2>Marka Model Ekleme Formu</h2>
+@using (Html.BeginForm("Ekle", "Diger", FormMethod.Post))
+{
+    <div class="col-3" style="margin-left:0px">
+        <div class="form-group">
+            @Html.DropDownList("marka", Model.MarkaModel, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Yeni Marka")
+            @Html.TextBox("ymarka",null, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            @Html.Label("Model")
+            @Html.TextBox("ymodel", null, new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.TextBox("username", User.Identity.Name, new { style = "display: none;" })
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success">EKLE</button>
+            &nbsp;<a href="javascript: history.go(-1)" class="btn btn-outline-dark">ÖNCEKİ SAYFA</a>
+        </div>
+
+    </div>
+}
